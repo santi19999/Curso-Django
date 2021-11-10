@@ -1,19 +1,18 @@
 from django.http import HttpResponse
 import datetime
+from django.template import Template, Context
 #Siempre deben retornar el httpResponse y deben resibir como parámetro el request
 
 
 def saludo(request):  #Primera Vista o view
-    texto = '''
-    <html>
-    <body>
-    <h1> Hola alumnos esta es nuestra primera página con Django!</h1>
-    </body>
-    </html>
-    '''
-    return HttpResponse(texto)
+    doc_externo=open("C:/Users/Santi/Desktop/Repositorios Clonados/Curso-Django/Proyectos Django/Proyecto1/Proyecto1/Plantillas/miplantilla.html")
+    plt=Template(doc_externo.read())
+    doc_externo.close()
+    ctx=Context()
+    documento=plt.render(ctx)
+    return HttpResponse(documento)
 
-def despedida(request): #Segunda Vista o view
+def despedida(request): #Segunda Vista o viewmi
     return HttpResponse("Hasta Luego Alumnos de Django")
 
 def dameFecha(request):
