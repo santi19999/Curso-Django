@@ -9,7 +9,17 @@
 </head>
 <body>
         <h1 style="color: aqua;">Bienvenidos a mi primera página con Django</h1>
-        <p style="color:red;">El nombre Completo del profesor es : {{nombre_persona}} {{apellido_persona}}
+        
+        {% if nombre_persona == 'Sergio Santiago'  %}
+
+        <p> El curso lo imparte el profesor titular</p>
+        {% else %}
+            <p> El curso lo imparte el profesor suplente!
+        {% endif %}
+        
+        
+        
+        <p style="color:red;">El nombre Completo del profesor es : {{nombre_persona|upper}} {{apellido_persona|lower}}
         <br>
         <p>La Fecha Actual es: {{fecha.day}}/{{fecha.month}}/{{fecha.year}}</p>
         <p><strong>Temas del Curso:</strong></p>

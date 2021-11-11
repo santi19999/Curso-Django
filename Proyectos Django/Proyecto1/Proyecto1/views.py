@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 import datetime
 from django.template import Template, Context
+from django.template.loader import get_template
+from django.shortcuts import render
 #Siempre deben retornar el httpResponse y deben resibir como parámetro el request
 
 class Persona(object):
@@ -23,25 +25,32 @@ def saludo(request):  #Primera Vista o view
     en el documento web.
     
     -En el contexto podemos ver que, se pueden agregar además de diccionarios, listas también y poder mostrarlas en el documento web
+    
+    -Simplificamos todo este view con el método shorcuts, directamente retornaos el render con los argumentos necesarios. Es una gran ventaja para ayudar 
+    a escribir menos código
     '''
     
-    p1=Persona("Sergio Santiago","Herrera Gauna")
+    p1=Persona("Daniel Santiago","Herrera Gauna")
     
     fecha_actual = datetime.datetime.now()
     
-    temas_delcurso=[]
+    temas_delcurso=['Plantillas', 'Filters', 'Controles de Flujo']
     
-    doc_externo=open("C:/Users/Santi/Desktop/Repositorios Clonados/Curso-Django/Proyectos Django/Proyecto1/Proyecto1/Plantillas/miplantilla.html")
+    return render(request, "miplantilla.html", {"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":fecha_actual, "temas":temas_delcurso})
+
     
-    plt=Template(doc_externo.read())
+    #doc_externo=open("C:/Users/Santi/Desktop/Repositorios Clonados/Curso-Django/Proyectos Django/Proyecto1/Proyecto1/Plantillas/miplantilla.html")
     
-    doc_externo.close()
+    #plt=Template(doc_externo.read())
     
-    ctx=Context({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":fecha_actual, "temas":temas_delcurso})
+    #doc_externo.close()
     
-    documento=plt.render(ctx)
     
-    return HttpResponse(documento)
+    #doc_externo=get_template('miplantilla.html')
+    
+    
+    #documento=doc_externo.render({"nombre_persona":p1.nombre,"apellido_persona":p1.apellido,"fecha":fecha_actual, "temas":temas_delcurso})
+    
 
 def despedida(request): #Segunda Vista o viewmi
     return HttpResponse("Hasta Luego Alumnos de Django")
