@@ -8,12 +8,28 @@
     <title>Primera Plantilla</title>
 </head>
 <body>
-    <div class="contain-title">   
-        <h1 class="titulo">Bienvenidos a mi primera página con Django</h1>
-    </div>
-    <div class="texto">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus harum labore exercitationem eos, quisquam, obcaecati tenetur necessitatibus quam laudantium inventore esse recusandae architecto laboriosam hic tempore a eius odio illo.</p>
-    </div>
+        <h1 style="color: aqua;">Bienvenidos a mi primera página con Django</h1>
+        <p style="color:red;">El nombre Completo del profesor es : {{nombre_persona}} {{apellido_persona}}
+        <br>
+        <p>La Fecha Actual es: {{fecha.day}}/{{fecha.month}}/{{fecha.year}}</p>
+        <p><strong>Temas del Curso:</strong></p>
+        <p>
+            <ul>
+                {% if temas %}
+                    {% for el_tema in temas %}
+                
+                        <li>
+                            {{el_tema}}
+                        </li>
+                
+                    {% endfor %}
+                    {% else %}
+                        <p>La lísta no tiene Elementos!</p>
+                {% endif %}
+                
+            </ul>
+        </p>
+    </p>
     
 </body>
-</html>l
+</html>   
