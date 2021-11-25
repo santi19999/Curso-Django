@@ -3,21 +3,22 @@
 {% load static %}
 
 {% block content %}
+
+<div class="contenedorFormulario">
+
+    {% if "valido" in request.GET %}
+
+        <p style="color: white";>Información enviada correctamente, gracias</p>
+
+    {% endif %}
     
-        <div class="contenedorFormulario">
+    <form action="" method="POST" style="text-align: center;">
+        {% csrf_token %}
+        <table style="color: white; margin: 20px auto;">{{miFormulario.as_table}}</table>
+        <input type="submit" value="Enviar" style="width: 150px;">
 
-            {% if "valido" in request.GET %}
-                <p style="color: yellow;">Informacion enviada correctamente</p>
-            {% endif %}
+    </form>
+   
+</div>
 
-            <form action="" method="POST">
-                {% csrf_token %} 
-            <table style="color: azure; margin:20px auto;" >
-                {{miFormulario.as_table}}
-            </table>
-            <input type="submit" value="Enviar" style="width: 100px;">
-        </form>
-        </div>
-
-<p style="color:white;">{{request.POST}}</p>
 {% endblock %}

@@ -278,22 +278,37 @@ ul.errorlist{
   color: red;
 }
 
-#linksCategorias{
-  color: white;
-  text-decoration: underline;
+.linksCategorias{
+
+color: white !important;
+
+text-decoration: underline;
+
 }
-#linksCategorias:hover{
+
+.linksCategorias:hover{
+
   text-decoration: none;
 }
 
+
 .contenedorFormulario{
+
   background-color: rgba(24, 64, 8);
+
   width: 50%;
+
   margin: 10px auto;
-  padding: 20px;
-  border-radius: 18px;
+
+  border-radius: 5px;
+
+  padding: 1px 0px;
+
+
+
 }
 
-.contenedorFormulario form {
-  text-align: center;
-}
+
+
+
+
