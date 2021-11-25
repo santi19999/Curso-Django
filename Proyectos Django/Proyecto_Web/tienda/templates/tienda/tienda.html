@@ -5,15 +5,20 @@
 {% block content %}
 
 <div class="container">
+    <div style="float: right;">
+        <p style="color: aliceblue;">Total: $ {{importe_total_carro}}</p>
+    </div>
     <div class="row">
         {% for producto in productos %}
         <div class="col-md-3">
-            <div class="card" style="width: 100%;height:350px ;margin:10px;">
+            <div class="card" style="width: 100%;margin:10px;">
                 <img class="card-img-top" src="{{producto.imagen.url}}" alt="Card image cap" style="height: 190px;">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{producto.nombre}}</h5>
                     <p class="card-text">$ {{producto.precio}}</p>
-                    <a href="" class="btn btn-primary">Comprar</a>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="http://" class="btn btn-success">Agregar al Carro</a>
                 </div>
             </div>
         </div>
